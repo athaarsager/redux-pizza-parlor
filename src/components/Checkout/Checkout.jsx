@@ -1,5 +1,6 @@
 import Header from "../Header/Header";
 import { useSelector } from "react-redux";
+import "./Checkout.css";
 function Checkout() {
     // NEED: DISPLAY CART ON PAGE IN TABLE FORMAT. JUST NAME AND COST OF EACH PIZZA
     // NEED: DISPLAY USER INFO AS PER README
@@ -16,6 +17,10 @@ function Checkout() {
         <p>{currentUser.customer_name}</p>
         <p>{currentUser.street_address}</p>
         <p>{currentUser.city}</p>
+        <p>{currentUser.type}</p>
+        <table>
+
+        </table>
         </>
     )
 }

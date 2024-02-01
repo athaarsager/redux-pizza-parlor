@@ -4,7 +4,7 @@ import logger from 'redux-logger';
 // for displaying all the pizzas
 const pizzaReducer = (state = [], action) => {
   if (action.type === "GET_PIZZAS") {
-    return [...state, action.payload];
+    return action.payload;
   } 
   return state;
 }

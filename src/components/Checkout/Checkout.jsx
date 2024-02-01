@@ -3,13 +3,13 @@ import CheckoutRow from "./CheckoutRow";
 import { useSelector } from "react-redux";
 import "./Checkout.css";
 function Checkout() {
-    // NEED: DISPLAY CART ON PAGE IN TABLE FORMAT. JUST NAME AND COST OF EACH PIZZA
-    // NEED: DISPLAY USER INFO AS PER README
+    // NEED: DISPLAY CART ON PAGE IN TABLE FORMAT. JUST NAME AND COST OF EACH PIZZA--DONE, NOT TESTED
+    // NEED: DISPLAY USER INFO AS PER README--DONE, NOT TESTED
     // NEED: CHECKOUT BUTTON
     // ON-CLICK: SEND USER INFO, ORDER TOTAL, AND ARRAY OF PIZZAS TO SERVER
     // SHOW CONFIRMATION DIALOG -- SWEETALERT TIME!
     // NAVIGATE USER BACK TO SELECT PIZZA PAGE
-    // CLLEAR REDUCERS AS APPROPRIATE
+    // CLEAR REDUCERS AS APPROPRIATE
     const currentUser = useSelector(store => store.currentUser);
     const cart = useSelector(store => store.cart);
     return (

@@ -17,12 +17,14 @@ function PizzaListItem({pizza}) {
                 type: "ADD_TO_CART",
                 payload: pizza
             })
+            
         setIsInCart(true);
         } else {
             dispatch({
                 type: "REMOVE_FROM_CART",
                 payload: pizza.id
             })
+           
         setIsInCart(false)
         }
     }

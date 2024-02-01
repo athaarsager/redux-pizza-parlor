@@ -1,5 +1,6 @@
 import CheckoutRow from "./CheckoutRow";
 import { useSelector, useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 import axios from "axios";
 import Swal from "sweetalert2";
 import "./Checkout.css";
@@ -7,15 +8,15 @@ function Checkout() {
     // NEED: DISPLAY CART ON PAGE IN TABLE FORMAT. JUST NAME AND COST OF EACH PIZZA--DONE, NOT TESTED
     // NEED: DISPLAY USER INFO AS PER README--DONE, NOT TESTED
     // NEED: CHECKOUT BUTTON--DONE
-    // ON-CLICK: SEND USER INFO, ORDER TOTAL, AND ARRAY OF PIZZAS TO SERVER
-    // SHOW CONFIRMATION DIALOG -- SWEETALERT TIME!
-    // NAVIGATE USER BACK TO SELECT PIZZA PAGE
+    // ON-CLICK: SEND USER INFO, ORDER TOTAL, AND ARRAY OF PIZZAS TO SERVER--DONE
+    // SHOW CONFIRMATION DIALOG -- SWEETALERT TIME!--DONE
+    // NAVIGATE USER BACK TO SELECT PIZZA PAGE--DONE!
     // CLEAR REDUCERS AS APPROPRIATE
     const currentUser = useSelector(store => store.currentUser);
     const cart = useSelector(store => store.cart);
     const totalPrice = useSelector(store => store.totalPrice);
     const dispatch = useDispatch();
-
+    const history = useHistory();
     const priceFormatter = new Intl.NumberFormat("en-US", {
         style: "currency",
         currency: "USD"
@@ -24,7 +25,7 @@ function Checkout() {
     const handleCheckout = () => {
         Swal.fire({
             title: "Are you sure you want to checkout?",
-            text: "You will not be able to alter your order",
+            text: "This will submit your order. You will not be able to make further changes",
             icon: "warning",
             showCancelButton: true,
             confirmButtonColor: "#3085d6",
@@ -37,13 +38,13 @@ function Checkout() {
                     text: "Your order has been submitted! Please allow 7-10 Business Months for your order to be processed and delivered.",
                     icon: "success"
                 });
-                axios.post("/api/order", {...currentUser, total: totalPrice})
+                axios.post("/api/order", { ...currentUser, total: totalPrice, pizzas: cart })
                     .then(() => {
                         const action = {
                             type: "CLEAR_CART",
                         }
                         dispatch(action);
-                        //need another post for array of pizzas?
+                        history.push("/");
                     })
                     .catch((error) => {
                         console.error("Error in checkout POST:", error);
@@ -74,7 +75,7 @@ function Checkout() {
                 </tbody>
             </table>
             <h2>Total: {priceFormatter.format(totalPrice)}</h2>
-            <button>CHECKOUT</button>
+            <button onClick={handleCheckout}>CHECKOUT</button>
         </>
     )
 }

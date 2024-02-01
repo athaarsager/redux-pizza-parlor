@@ -14,6 +14,8 @@ const totalPriceReducer = (state = 0, action) => {
     return state + action.payload.price;
   } else if (action.type === "REMOVE_FROM_CART") {
     return state - action.payload.price;
+  } else if (action.type === "CLEAR_CART") {
+    return 0;
   }
   return state;
 }
@@ -33,6 +35,8 @@ const cartReducer = (state = [], action) => {
 const userReducer = (state = {}, action) => {
   if (action.type === "ADD_CURRENT_USER") {
     return action.payload;
+  } else if (action.type === "CLEAR_CART") {
+    return {};
   }
   return state;
 }

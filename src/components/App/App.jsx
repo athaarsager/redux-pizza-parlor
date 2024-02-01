@@ -5,6 +5,7 @@ import Header from '../Header/Header';
 import Nav from '../Nav/Nav';
 import PizzaList from './PizzaList/PizzaList';
 import Checkout from '../Checkout/Checkout';
+import Admin from '../Admin/Admin';
 import { HashRouter as Router, Route, Link } from 'react-router-dom';
 
 
@@ -20,6 +21,9 @@ function App() {
       </Route>
       <Route path="/checkout" exact>
         <Checkout />
+      </Route>
+      <Route path="/admin" exact>
+        <Admin />
       </Route>
       </Router>
     </div>

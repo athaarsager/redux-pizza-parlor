@@ -30,27 +30,28 @@ function Checkout() {
             confirmButtonColor: "#3085d6",
             cancelButtonColor: "#d33",
             confirmButtonText: "Yes, checkout!"
-          }).then((result) => {
+        }).then((result) => {
             if (result.isConfirmed) {
-              Swal.fire({
-                title: "Done!",
-                text: "Your order has been submitted! Please allow 7-10 Business Months for your order to be processed and delivered.",
-                icon: "success"
-              });
+                Swal.fire({
+                    title: "Done!",
+                    text: "Your order has been submitted! Please allow 7-10 Business Months for your order to be processed and delivered.",
+                    icon: "success"
+                });
+                axios.post("/api/order", currentUser)
+                    .then((response) => {
+                        const action = {
+                            type: "CLEAR_CART",
+                            payload: response.data
+                        }
+                        dispatch(action);
+                        //need second post request?
+                    })
+                    .catch((error) => {
+                        console.error("Error in checkout POST:", error);
+                    });
             }
-          });
-        axios.post("/api/order", currentUser)
-        .then((response) => {
-            const action = {
-                type: "CLEAR_CART",
-                payload: response.data
-            }
-            dispatch(action);
-            //need second post request?
-        })
-        .catch((error) => {
-            console.error("Error in checkout POST:", error);
         });
+
     }
 
     return (

@@ -7,7 +7,7 @@ function Checkout() {
     // NEED: DISPLAY CART ON PAGE IN TABLE FORMAT. JUST NAME AND COST OF EACH PIZZA--DONE, NOT TESTED
     // NEED: DISPLAY USER INFO AS PER README--DONE, NOT TESTED
     // NEED: CHECKOUT BUTTON--DONE
-    // ON-CLICK: SEND USER INFO, ORDER TOTAL, AND ARRAY OF PIZZAS TO SERVER
+    // ON-CLICK: SEND USER INFO, ORDER TOTAL, AND ARRAY OF PIZZAS TO SERVER--DONE
     // SHOW CONFIRMATION DIALOG -- SWEETALERT TIME!
     // NAVIGATE USER BACK TO SELECT PIZZA PAGE
     // CLEAR REDUCERS AS APPROPRIATE
@@ -37,7 +37,7 @@ function Checkout() {
                     text: "Your order has been submitted! Please allow 7-10 Business Months for your order to be processed and delivered.",
                     icon: "success"
                 });
-                axios.post("/api/order", {...currentUser, total: totalPrice})
+                axios.post("/api/order", {...currentUser, total: totalPrice, pizzas: cart})
                     .then(() => {
                         const action = {
                             type: "CLEAR_CART",

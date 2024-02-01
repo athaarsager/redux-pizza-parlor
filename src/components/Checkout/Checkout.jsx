@@ -1,4 +1,3 @@
-import Header from "../Header/Header";
 import CheckoutRow from "./CheckoutRow";
 import { useSelector } from "react-redux";
 import "./Checkout.css";
@@ -17,10 +16,10 @@ function Checkout() {
     const priceFormatter = new Intl.NumberFormat("en-US", {
         style: "currency",
         currency: "USD"
-      });
+    });
+
     return (
         <>
-            <Header />
             <h2>Step 3: Checkout</h2>
             <p>{currentUser.customer_name}</p>
             <p>{currentUser.street_address}</p>
@@ -28,8 +27,10 @@ function Checkout() {
             <p>{currentUser.type}</p>
             <table>
                 <thead>
-                    <th>Name</th>
-                    <th>Cost</th>
+                    <tr>
+                        <th>Name</th>
+                        <th>Cost</th>
+                    </tr>
                 </thead>
                 <tbody>
                     {cart.map((pizza, i) => (
@@ -38,7 +39,7 @@ function Checkout() {
                 </tbody>
             </table>
             <h2>Total: {priceFormatter.format(totalPrice)}</h2>
-            <button>Checkout</button>
+            <button>CHECKOUT</button>
         </>
     )
 }

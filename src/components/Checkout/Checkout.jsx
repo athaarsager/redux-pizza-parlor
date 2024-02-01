@@ -25,7 +25,7 @@ function Checkout() {
     const handleCheckout = () => {
         Swal.fire({
             title: "Are you sure you want to checkout?",
-            text: "You will not be able to alter your order",
+            text: "This will submit your order. You will not be able to make further changes",
             icon: "warning",
             showCancelButton: true,
             confirmButtonColor: "#3085d6",

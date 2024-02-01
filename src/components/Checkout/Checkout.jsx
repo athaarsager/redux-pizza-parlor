@@ -37,14 +37,13 @@ function Checkout() {
                     text: "Your order has been submitted! Please allow 7-10 Business Months for your order to be processed and delivered.",
                     icon: "success"
                 });
-                axios.post("/api/order", currentUser)
-                    .then((response) => {
+                axios.post("/api/order", {...currentUser, total: totalPrice})
+                    .then(() => {
                         const action = {
                             type: "CLEAR_CART",
-                            payload: response.data
                         }
                         dispatch(action);
-                        //need second post request?
+                        //need another post for array of pizzas?
                     })
                     .catch((error) => {
                         console.error("Error in checkout POST:", error);

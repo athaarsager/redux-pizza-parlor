@@ -30,14 +30,6 @@ const cartReducer = (state = [], action) => {
   return state;
 }
 
-// this fires when someone hits "checkout." Adds order to admin page
-const orderReducer = (state = [], action) => {
-  if (action.type === "ADD_TO_ORDERS") {
-    return [...state, action.payload];
-  }
-  return state;
-}
-
 const userReducer = (state = {}, action) => {
   if (action.type === "ADD_CURRENT_USER") {
     return action.payload;
@@ -49,7 +41,6 @@ const store = createStore(
   combineReducers({
     pizzas: pizzaReducer,
     cart: cartReducer,
-    orders: orderReducer,
     currentUser: userReducer,
     totalPrice: totalPriceReducer
   }),

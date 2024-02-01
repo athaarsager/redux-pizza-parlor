@@ -38,7 +38,7 @@ function Checkout() {
                     text: "Your order has been submitted! Please allow 7-10 Business Months for your order to be processed and delivered.",
                     icon: "success"
                 });
-                axios.post("/api/order", { ...currentUser, total: totalPrice, pizzas: cart })
+                axios.post("/api/order", { ...currentUser, total: totalPrice, pizzas: cart.map((pizza) => ({id: pizza.id, quantity: '1'}))})
                     .then(() => {
                         const action = {
                             type: "CLEAR_CART",
@@ -60,7 +60,7 @@ function Checkout() {
             <p>{currentUser.customer_name}</p>
             <p>{currentUser.street_address}</p>
             <p>{currentUser.city}</p>
-            <p>{currentUser.type}</p>
+            <p id="order-type"><strong>For {currentUser.type}</strong></p>
             <table>
                 <thead>
                     <tr>

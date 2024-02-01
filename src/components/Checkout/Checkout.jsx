@@ -1,6 +1,7 @@
 import CheckoutRow from "./CheckoutRow";
 import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
+import Swal from "sweetalert2";
 import "./Checkout.css";
 function Checkout() {
     // NEED: DISPLAY CART ON PAGE IN TABLE FORMAT. JUST NAME AND COST OF EACH PIZZA--DONE, NOT TESTED
@@ -21,6 +22,23 @@ function Checkout() {
     });
 
     const handleCheckout = () => {
+        Swal.fire({
+            title: "Are you sure you want to checkout?",
+            text: "You will not be able to alter your order",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, checkout!"
+          }).then((result) => {
+            if (result.isConfirmed) {
+              Swal.fire({
+                title: "Done!",
+                text: "Your order has been submitted! Please allow 7-10 Business Months for your order to be processed and delivered.",
+                icon: "success"
+              });
+            }
+          });
         axios.post("/api/order", currentUser)
         .then((response) => {
             const action = {
@@ -28,6 +46,7 @@ function Checkout() {
                 payload: response.data
             }
             dispatch(action);
+            //need second post request?
         })
         .catch((error) => {
             console.error("Error in checkout POST:", error);

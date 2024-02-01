@@ -1,3 +1,4 @@
+import Header from "../Header/Header";
 function Checkout() {
     // NEED: DISPLAY CART ON PAGE IN TABLE FORMAT. JUST NAME AND COST OF EACH PIZZA
     // NEED: DISPLAY USER INFO AS PER README
@@ -8,6 +9,7 @@ function Checkout() {
             // CLLEAR REDUCERS AS APPROPRIATE
     return (
         <>
+        <Header />
         </>
     )
 }

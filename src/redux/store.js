@@ -27,11 +27,19 @@ const orderReducer = (state = [], action) => {
   return state;
 }
 
+const userReducer = (state = {}, action) => {
+  if (action.type === "ADD_CURRENT_USER") {
+    return action.payload;
+  }
+  return state;
+}
+
 const store = createStore(
   combineReducers({
     pizzas: pizzaReducer, // 👈 Be sure to replace this, too!
     cart: cartReducer,
-    orders: orderReducer
+    orders: orderReducer,
+    currentUser: userReducer
   }),
   applyMiddleware(logger),
 );

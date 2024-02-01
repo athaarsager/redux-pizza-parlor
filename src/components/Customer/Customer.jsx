@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState } from "react"
 import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 export default function Order(){
     const [name, setName] = useState('');
     const [address, setAddress] = useState('');
@@ -8,6 +9,7 @@ export default function Order(){
     const [zip, setZip] = useState('');
     const [deliveryType,setDeliveryType] = useState('pickup');
     const dispatch = useDispatch();
+    const history = useHistory();
 
     function handleSubmit(event) {
         event.preventDefault();
@@ -21,7 +23,10 @@ export default function Order(){
                 zip: zip,
                 type: deliveryType,
             }
-        })
+        });
+
+        history.push('/checkout');
+
     }
 
     function handleDeliveryType(event) {
@@ -52,7 +57,7 @@ export default function Order(){
                 <label htmlFor="delivery">Delivery</label>
             </div>
 
-            <button>Submit</button>
+            <button>Next</button>
         </form>
         
     </>

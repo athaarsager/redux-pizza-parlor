@@ -7,7 +7,7 @@ import PizzaList from './PizzaList/PizzaList';
 import Checkout from '../Checkout/Checkout';
 import Admin from '../Admin/Admin';
 import { HashRouter as Router, Route, Link } from 'react-router-dom';
-
+import Customer from '../Customer/Customer';
 
 function App() {
 
@@ -18,6 +18,9 @@ function App() {
         <Nav />
       <Route path="/" exact>
         <PizzaList />
+        </Route>
+      <Route path='/customer'>
+        <Customer/>
       </Route>
       <Route path="/checkout" exact>
         <Checkout />

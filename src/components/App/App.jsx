@@ -18,8 +18,8 @@ function App() {
         <Nav />
       <Route path="/" exact>
         <PizzaList />
-        </Route>
-      <Route path='/customer'>
+      </Route>
+<Route path='/customer'>
         <Customer/>
       </Route>
       <Route path="/checkout" exact>

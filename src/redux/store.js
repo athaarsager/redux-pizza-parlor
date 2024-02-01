@@ -11,9 +11,9 @@ const pizzaReducer = (state = [], action) => {
 
 const totalPriceReducer = (state = 0, action) => {
   if (action.type === "ADD_TO_CART") {
-    return state + action.payload.price;
+    return state + parseFloat(action.payload.price);
   } else if (action.type === "REMOVE_FROM_CART") {
-    return state - action.payload.price;
+    return state - parseFloat(action.payload.price);
   } else if (action.type === "CLEAR_CART") {
     return 0;
   }

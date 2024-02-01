@@ -12,7 +12,7 @@ function PizzaListItem({pizza}) {
 
     const addToCart = () => {
         console.log(pizza);
-
+        alert(pizza.price)
         if(!isInCart) {
             dispatch({
                 type: "ADD_TO_CART",

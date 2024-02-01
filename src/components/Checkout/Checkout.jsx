@@ -1,5 +1,6 @@
 import CheckoutRow from "./CheckoutRow";
 import { useSelector, useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 import axios from "axios";
 import Swal from "sweetalert2";
 import "./Checkout.css";
@@ -8,14 +9,14 @@ function Checkout() {
     // NEED: DISPLAY USER INFO AS PER README--DONE, NOT TESTED
     // NEED: CHECKOUT BUTTON--DONE
     // ON-CLICK: SEND USER INFO, ORDER TOTAL, AND ARRAY OF PIZZAS TO SERVER--DONE
-    // SHOW CONFIRMATION DIALOG -- SWEETALERT TIME!
-    // NAVIGATE USER BACK TO SELECT PIZZA PAGE
+    // SHOW CONFIRMATION DIALOG -- SWEETALERT TIME!--DONE
+    // NAVIGATE USER BACK TO SELECT PIZZA PAGE--DONE!
     // CLEAR REDUCERS AS APPROPRIATE
     const currentUser = useSelector(store => store.currentUser);
     const cart = useSelector(store => store.cart);
     const totalPrice = useSelector(store => store.totalPrice);
     const dispatch = useDispatch();
-
+    const history = useHistory();
     const priceFormatter = new Intl.NumberFormat("en-US", {
         style: "currency",
         currency: "USD"
@@ -43,7 +44,7 @@ function Checkout() {
                             type: "CLEAR_CART",
                         }
                         dispatch(action);
-                        //need another post for array of pizzas?
+                        history.push("/");
                     })
                     .catch((error) => {
                         console.error("Error in checkout POST:", error);

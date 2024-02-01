@@ -24,6 +24,8 @@ const cartReducer = (state = [], action) => {
     return [...state, action.payload];
   } else if (action.type === "REMOVE_FROM_CART") {
     return state.filter(pizza => pizza.id !== action.payload);
+  } else if (action.type === "CLEAR_CART") {
+    return [];
   }
   return state;
 }

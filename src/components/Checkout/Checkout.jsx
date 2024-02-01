@@ -75,7 +75,7 @@ function Checkout() {
                 </tbody>
             </table>
             <h2>Total: {priceFormatter.format(totalPrice)}</h2>
-            <button>CHECKOUT</button>
+            <button onClick={handleCheckout}>CHECKOUT</button>
         </>
     )
 }

@@ -27,10 +27,12 @@ function Checkout() {
                 </thead>
                 <tbody>
                     {cart.map((pizza, i) => (
-                        <CheckoutRow key={i} pizza={pizza}/>
+                        <CheckoutRow key={i} pizza={pizza} />
                     ))}
                 </tbody>
             </table>
+            <h2>Total: {}</h2>
+            <button>Checkout</button>
         </>
     )
 }

@@ -12,6 +12,12 @@ function Checkout() {
     // CLEAR REDUCERS AS APPROPRIATE
     const currentUser = useSelector(store => store.currentUser);
     const cart = useSelector(store => store.cart);
+    const totalPrice = useSelector(store => store.totalPrice);
+
+    const priceFormatter = new Intl.NumberFormat("en-US", {
+        style: "currency",
+        currency: "USD"
+      });
     return (
         <>
             <Header />
@@ -31,7 +37,7 @@ function Checkout() {
                     ))}
                 </tbody>
             </table>
-            <h2>Total: {}</h2>
+            <h2>Total: {priceFormatter.format(totalPrice)}</h2>
             <button>Checkout</button>
         </>
     )

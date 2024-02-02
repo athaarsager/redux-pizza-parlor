@@ -1,0 +1,15 @@
+#form-container {
+    display: flex;
+    justify-content: center;
+}
+
+form{
+    padding: 20px;
+}
+
+input{
+    display: block;
+}
+
+#Delivery{display: inline;}
+#pickup{display: inline;}

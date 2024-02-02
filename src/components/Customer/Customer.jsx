@@ -2,6 +2,7 @@ import axios from "axios";
 import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
+import './Customer.css'
 export default function Order(){
     const currentUser = useSelector(s=>s.currentUser);
     const [name, setName] = useState(Object.keys(currentUser).length === 0?'': currentUser.customer_name);
@@ -51,6 +52,7 @@ export default function Order(){
     }
     return <>
         <h1>Step 2: Customer Information</h1>
+        <div id="form-container">
         <form onSubmit={handleSubmit}>
             <input required value={name} onChange={e=>{setName(e.target.value)}} placeholder="Name" type="text" />
             <input required value={address} onChange={e=>{setAddress(e.target.value)}} placeholder="Street Address" type="text" />
@@ -71,6 +73,7 @@ export default function Order(){
 
             <button>Next</button>
         </form>
+        </div>
         
     </>
 }

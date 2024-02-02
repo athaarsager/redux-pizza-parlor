@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import PizzaListItem from "../../PizzaListItem/PizzaListItem";
 import { useHistory } from "react-router-dom/cjs/react-router-dom";
 
+import './PIzzaList.css';
+
 
 
 function PizzaList() {
@@ -27,11 +29,11 @@ function PizzaList() {
 
 
     return(
-        <div>
+        <div className="cardContainer">
             {pizzas.map((pizza, i) => {
                 return <PizzaListItem key={i} pizza={pizza} />
             })}
-            <button onClick={() => history.push('/customer')}>Next Page</button>
+            <button className="nextPage" onClick={() => history.push('/customer')}>Enter Customer Info</button>
         </div>
     )
 

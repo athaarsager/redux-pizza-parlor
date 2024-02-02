@@ -1,9 +1,10 @@
 import axios from "axios";
 import { useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 function Admin() {
     const orders = useSelector(store => store.orders);
+    const dispatch = useDispatch();
 
     //need get request
     const getOrders = () => {

@@ -34,7 +34,7 @@ function PizzaList() {
             {pizzas.map((pizza, i) => {
                 return <PizzaListItem key={i} pizza={pizza} />
             })}
-            <button className="nextPage" onClick={() => history.push('/customer')}></button>
+            <button className="nextPage" onClick={() => history.push('/customer')}>Next Page: Enter Customer Info</button>
         </Stack>
     )
 

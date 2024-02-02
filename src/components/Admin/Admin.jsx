@@ -21,6 +21,10 @@ function Admin() {
         });
     }
 
+    useEffect(() => {
+        getOrders();
+    }, []);
+
     return (
         <div>
             <header>

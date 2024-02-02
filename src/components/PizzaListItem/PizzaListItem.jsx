@@ -1,6 +1,7 @@
 import { useDispatch } from "react-redux"
 import { useState } from "react";
 import './PizzaListItem.css';
+import Stack from '@mui/material/Stack';
 
 // Button Icons
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
@@ -41,8 +42,7 @@ function PizzaListItem({pizza}) {
     }
 
     return(
-    <div className="cardContainer"> 
-    <Card sx={{ maxWidth: 345 }} key={pizza.id} className="card">
+    <Card sx={{ width: 345 }} key={pizza.id} className="card">
         <CardActionArea>
             <CardMedia
                 component="img"
@@ -68,7 +68,6 @@ function PizzaListItem({pizza}) {
             </Button>
         </CardActions>
     </Card>
-    </div>
     )
 }
 

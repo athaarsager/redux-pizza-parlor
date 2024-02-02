@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import AdminRow from "./AdminRow";
+import '../Checkout/Checkout.css'
 
 function Admin() {
     const orders = useSelector(store => store.orders);

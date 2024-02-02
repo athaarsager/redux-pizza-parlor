@@ -10,7 +10,11 @@ function Admin() {
     const getOrders = () => {
         axios.get("/api/order")
         .then((response) => {
-            
+            const action = {
+                type: "ADD_TO_ORDERS",
+                payload: response.data
+            }
+            dispatch(action);
         })
         .cath((error) => {
             console.error("ERROR in client-side Admin GET:", error);

@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import AdminRow from "./AdminRow";
 
 function Admin() {
     const orders = useSelector(store => store.orders);
@@ -38,7 +39,7 @@ function Admin() {
                     </tr>
                 </thead>
                 <tbody>
-                    
+                <AdminRow />
                 </tbody>
             </table>
         </div>

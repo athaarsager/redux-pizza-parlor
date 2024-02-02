@@ -26,10 +26,15 @@ export default function Order(){
         });
 
         history.push('/checkout');
+    }
 
+    function handleBackButton() {
+        history.push('/');
+        
     }
 
     function handleDeliveryType(event) {
+        
         if (event.target.value === 'pickup') {
             setDeliveryType('pickup');
             
@@ -56,6 +61,8 @@ export default function Order(){
                 <input type="radio" name="Delivery" id="Delivery" checked={deliveryType === 'delivery'} onChange={handleDeliveryType}/>
                 <label htmlFor="delivery">Delivery</label>
             </div>
+
+            <button onClick={handleBackButton} type="button">Back</button>
 
             <button>Next</button>
         </form>

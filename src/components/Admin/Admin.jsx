@@ -1,4 +1,19 @@
+import axios from "axios";
+import { useEffect } from "react";
+
 function Admin() {
+
+    //need get request
+    const getOrders = () => {
+        axios.get("/api/order")
+        .then((response) => {
+
+        })
+        .cath((error) => {
+            console.error("ERROR in client-side Admin GET:", error);
+        });
+    }
+
     return (
         <div>
             <header>
@@ -13,6 +28,9 @@ function Admin() {
                         <th>Cost</th>
                     </row>
                 </theader>
+                <tbody>
+
+                </tbody>
             </table>
         </div>
     )

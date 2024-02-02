@@ -32,6 +32,13 @@ const cartReducer = (state = [], action) => {
   return state;
 }
 
+const orderReducer = (state = [], action) => {
+  if (action.type === "ADD_TO_ORDERS") {
+    return [...state, action.payload];
+  }
+  return state;
+}
+
 const userReducer = (state = {}, action) => {
   if (action.type === "ADD_CURRENT_USER") {
     return action.payload;
@@ -46,7 +53,8 @@ const store = createStore(
     pizzas: pizzaReducer,
     cart: cartReducer,
     currentUser: userReducer,
-    totalPrice: totalPriceReducer
+    totalPrice: totalPriceReducer,
+    orders: orderReducer
   }),
   applyMiddleware(logger),
 );

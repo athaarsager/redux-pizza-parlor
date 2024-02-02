@@ -34,7 +34,7 @@ const cartReducer = (state = [], action) => {
 
 const orderReducer = (state = [], action) => {
   if (action.type === "ADD_TO_ORDERS") {
-    return [...state, action.payload];
+    return action.payload;
   }
   return state;
 }

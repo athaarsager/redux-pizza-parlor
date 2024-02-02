@@ -1,13 +1,15 @@
 import axios from "axios";
 import { useEffect } from "react";
+import { useSelector } from "react-redux";
 
 function Admin() {
+    const orders = useSelector(store => store.orders);
 
     //need get request
     const getOrders = () => {
         axios.get("/api/order")
         .then((response) => {
-
+            
         })
         .cath((error) => {
             console.error("ERROR in client-side Admin GET:", error);

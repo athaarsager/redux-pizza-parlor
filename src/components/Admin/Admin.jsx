@@ -9,16 +9,16 @@ function Admin() {
     //need get request
     const getOrders = () => {
         axios.get("/api/order")
-        .then((response) => {
-            const action = {
-                type: "ADD_TO_ORDERS",
-                payload: response.data
-            }
-            dispatch(action);
-        })
-        .cath((error) => {
-            console.error("ERROR in client-side Admin GET:", error);
-        });
+            .then((response) => {
+                const action = {
+                    type: "ADD_TO_ORDERS",
+                    payload: response.data
+                }
+                dispatch(action);
+            })
+            .catch((error) => {
+                console.error("ERROR in client-side Admin GET:", error);
+            });
     }
 
     useEffect(() => {
@@ -27,9 +27,7 @@ function Admin() {
 
     return (
         <div>
-            <header>
-                <h1>Live, Leavitt, Pizza Orders</h1>
-            </header>
+            <h1>Live, Leavitt, Pizza Orders</h1>
             <table>
                 <theader>
                     <row>

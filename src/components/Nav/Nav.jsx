@@ -7,6 +7,8 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import HomeIcon from '@mui/icons-material/Home';
 import { useHistory } from "react-router-dom/cjs/react-router-dom";
 
+import './Nav.css'
+
 
 
 function Nav() {
@@ -23,14 +25,14 @@ function Nav() {
 
     return(
         <>
-        <Stack spacing={2} direction="row">
-        <IconButton aria-label="home-page" onClick={() => history.push('/')}>
+        <Stack spacing={2} direction="row" className="iconStack">
+        <IconButton color="success" aria-label="home-page" onClick={() => history.push('/')}>
             <StyledBadge color="primary">
                 <HomeIcon />
             </StyledBadge>
         </IconButton>
-        <IconButton aria-label="cart" onClick={() => history.push('/checkout')}>
-            <StyledBadge color="secondary">
+        <IconButton color="success" aria-label="cart" onClick={() => history.push('/checkout')}>
+            <StyledBadge color="primary">
                 <ShoppingCartIcon />
             </StyledBadge>
         </IconButton>

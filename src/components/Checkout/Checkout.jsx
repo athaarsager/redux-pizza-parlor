@@ -11,7 +11,7 @@ function Checkout() {
     // ON-CLICK: SEND USER INFO, ORDER TOTAL, AND ARRAY OF PIZZAS TO SERVER--DONE
     // SHOW CONFIRMATION DIALOG -- SWEETALERT TIME!--DONE
     // NAVIGATE USER BACK TO SELECT PIZZA PAGE--DONE!
-    // CLEAR REDUCERS AS APPROPRIATE
+    // CLEAR REDUCERS AS APPROPRIATE--DONE!
     const currentUser = useSelector(store => store.currentUser);
     const cart = useSelector(store => store.cart);
     const totalPrice = useSelector(store => store.totalPrice);
@@ -35,7 +35,7 @@ function Checkout() {
             if (result.isConfirmed) {
                 Swal.fire({
                     title: "Done!",
-                    text: "Your order has been submitted! Please allow 7-10 Business Months for your order to be processed and delivered.",
+                    text: "Your order has been submitted! Please allow 7-10 Business Months for your order to be processed and made oven-fresh!",
                     icon: "success"
                 });
                 axios.post("/api/order", { ...currentUser, total: totalPrice, pizzas: cart.map((pizza) => ({id: pizza.id, quantity: '1'}))})

@@ -1,4 +1,4 @@
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { useState } from "react";
 import './PizzaListItem.css';
 import Stack from '@mui/material/Stack';
@@ -16,31 +16,43 @@ import { Button, CardActionArea, CardActions } from '@mui/material';
 
 function PizzaListItem({pizza}) {
     const dispatch = useDispatch();
-    const [isInCart, setIsInCart] = useState(false);
+    const cart = useSelector(s=>s.cart);
+    // const [isInCart, setIsInCart] = useState(false);
 
     const priceFormatter = new Intl.NumberFormat("en-US", {
         style: "currency",
         currency: "USD"
     });
 
+    function isInCart(pizza) {
+        // console.log("cart pizza", cart);
+        let pizzaFound = cart.filter((pizzaInCart) => pizzaInCart.id === pizza.id);
+        console.log("found pizza", pizzaFound);
+        return pizzaFound.length != 0? true : false;
+    }
+
     const addToCart = () => {
-        console.log(pizza);
-        if(!isInCart) {
-            dispatch({
-                type: "ADD_TO_CART",
-                payload: pizza
-            })
-            
-        setIsInCart(true);
-        } else {
+        // console.log(pizza);
+        if(isInCart(pizza)) {
             dispatch({
                 type: "REMOVE_FROM_CART",
                 payload: pizza.id
             })
-        setIsInCart(false)
+            
+        // setIsInCart(true);
+        } else {
+            dispatch({
+                type: "ADD_TO_CART",
+                payload: pizza
+            })
+           
+       // setIsInCart(false)
         }
     }
 
+    
+    
+    console.log(isInCart(pizza));
     return(
     <Card sx={{ width: 345 }} key={pizza.id} className="card">
         <CardActionArea>
@@ -64,7 +76,7 @@ function PizzaListItem({pizza}) {
         </CardActionArea>
         <CardActions>
             <Button size="small" color="primary" onClick={addToCart}>
-            {isInCart ? <RemoveShoppingCartIcon/> : <AddShoppingCartIcon/>}
+            {isInCart(pizza)? <RemoveShoppingCartIcon/> : <AddShoppingCartIcon/>}
             </Button>
         </CardActions>
     </Card>

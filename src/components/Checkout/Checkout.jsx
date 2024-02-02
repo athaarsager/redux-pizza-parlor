@@ -22,6 +22,10 @@ function Checkout() {
         currency: "USD"
     });
 
+    function handleBackButton() {
+        history.push('/customer');
+        
+    }
     const handleCheckout = () => {
         Swal.fire({
             title: "Are you sure you want to checkout?",
@@ -75,7 +79,9 @@ function Checkout() {
                 </tbody>
             </table>
             <h2>Total: {priceFormatter.format(totalPrice)}</h2>
+            <button onClick={handleBackButton}>Back</button>
             <button onClick={handleCheckout}>CHECKOUT</button>
+            
         </>
     )
 }

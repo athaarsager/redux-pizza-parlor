@@ -1,15 +1,20 @@
 import axios from "axios";
 import { useState } from "react"
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 export default function Order(){
-    const [name, setName] = useState('');
-    const [address, setAddress] = useState('');
-    const [city, setCity] = useState('');
-    const [zip, setZip] = useState('');
-    const [deliveryType,setDeliveryType] = useState('pickup');
+    const currentUser = useSelector(s=>s.currentUser);
+    const [name, setName] = useState(Object.keys(currentUser).length === 0?'': currentUser.customer_name);
+    const [address, setAddress] = useState(Object.keys(currentUser).length === 0?'': currentUser.street_address);
+    const [city, setCity] = useState(Object.keys(currentUser).length === 0?'': currentUser.city);
+    const [zip, setZip] = useState(Object.keys(currentUser).length === 0?'': currentUser.zip);
+    const [deliveryType,setDeliveryType] = useState(Object.keys(currentUser).length === 0?'pickup' : currentUser.type);
     const dispatch = useDispatch();
     const history = useHistory();
+
+    console.log(city);
+    console.log(Object.keys(currentUser).length === 0);
+
 
     function handleSubmit(event) {
         event.preventDefault();

@@ -1,5 +1,17 @@
 import { useDispatch, useSelector } from "react-redux"
 import { useState } from "react";
+import './PizzaListItem.css';
+
+// Button Icons
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import RemoveShoppingCartIcon from '@mui/icons-material/RemoveShoppingCart';
+
+// Stuff to make the MI pizza cards
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import Typography from '@mui/material/Typography';
+import { Button, CardActionArea, CardActions } from '@mui/material';
 
 function PizzaListItem({pizza}) {
     const dispatch = useDispatch();
@@ -33,7 +45,7 @@ function PizzaListItem({pizza}) {
                 payload: pizza
             })
            
-        // setIsInCart(false)
+       // setIsInCart(false)
         }
     }
 
@@ -41,15 +53,34 @@ function PizzaListItem({pizza}) {
     
     console.log(isInCart(pizza));
     return(
-        <div key={pizza.id}>
-            <img src={pizza.image_path} alt={pizza.description}/>
-            <h2>{pizza.name}</h2>
-            <p>{pizza.description}</p>
-            <h5>{priceFormatter.format(pizza.price)}</h5>
-            <button onClick={addToCart}>
-            {isInCart(pizza)? "REMOVE" : "ADD"}
-            </button>
-        </div>
+    <div className="cardContainer"> 
+    <Card sx={{ maxWidth: 345 }} key={pizza.id} className="card">
+        <CardActionArea>
+            <CardMedia
+                component="img"
+                height="140"
+                image={pizza.image_path}
+                alt={pizza.description}
+            />
+            <CardContent>
+                <Typography gutterBottom variant="h5" component="div">
+                    {pizza.name}
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                {pizza.description}
+                </Typography>
+                <Typography variant="h5" color="text.secondary">
+                {priceFormatter.format(pizza.price)}
+                </Typography>
+            </CardContent>
+        </CardActionArea>
+        <CardActions>
+            <Button size="small" color="primary" onClick={addToCart}>
+            {isInCart(pizza)? <RemoveShoppingCartIcon/> : <AddShoppingCartIcon/>}
+            </Button>
+        </CardActions>
+    </Card>
+    </div>
     )
 }
 

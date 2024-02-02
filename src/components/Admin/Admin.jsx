@@ -1,37 +1,47 @@
 import axios from "axios";
 import { useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import AdminRow from "./AdminRow";
 
 function Admin() {
     const orders = useSelector(store => store.orders);
+    const dispatch = useDispatch();
 
     //need get request
     const getOrders = () => {
         axios.get("/api/order")
-        .then((response) => {
-            
-        })
-        .cath((error) => {
-            console.error("ERROR in client-side Admin GET:", error);
-        });
+            .then((response) => {
+                const action = {
+                    type: "ADD_TO_ORDERS",
+                    payload: response.data
+                }
+                dispatch(action);
+            })
+            .catch((error) => {
+                console.error("ERROR in client-side Admin GET:", error);
+            });
     }
+
+    useEffect(() => {
+        getOrders();
+    }, []);
 
     return (
         <div>
-            <header>
-                <h1>Live, Leavitt, Pizza Orders</h1>
-            </header>
+            <h1>Live, Leavitt, Pizza Orders</h1>
             <table>
-                <theader>
-                    <row>
+                <thead>
+                    <tr>
                         <th>Name</th>
                         <th>Time Order Placed</th>
                         <th>Type</th>
                         <th>Cost</th>
-                    </row>
-                </theader>
+                    </tr>
+                </thead>
                 <tbody>
-
+                {orders.map((order, i) => (
+                    <AdminRow key = {i} order = {order} />
+                ))}
                 </tbody>
             </table>
         </div>

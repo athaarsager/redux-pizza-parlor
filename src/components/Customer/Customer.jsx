@@ -54,7 +54,7 @@ export default function Order(){
         <form onSubmit={handleSubmit}>
             <input required value={name} onChange={e=>{setName(e.target.value)}} placeholder="Name" type="text" />
             <input required value={address} onChange={e=>{setAddress(e.target.value)}} placeholder="Street Address" type="text" />
-            <input requiredvalue={city} onChange={e=>{setCity(e.target.value)}} placeholder="City" type="text" />
+            <input required value={city} onChange={e=>{setCity(e.target.value)}} placeholder="City" type="text" />
             <input required value={zip} onChange={e=>setZip(e.target.value)} placeholder="Zip" type="text" />
 
 

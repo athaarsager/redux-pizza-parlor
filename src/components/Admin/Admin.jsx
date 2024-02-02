@@ -39,7 +39,9 @@ function Admin() {
                     </tr>
                 </thead>
                 <tbody>
-                <AdminRow />
+                {orders.map((order, i) => (
+                    <AdminRow key = {i} order = {order} />
+                ))}
                 </tbody>
             </table>
         </div>

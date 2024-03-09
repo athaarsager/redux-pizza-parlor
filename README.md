@@ -25,6 +25,11 @@ Users are unable to modify item totals on this screen. When they click checkout,
 This page does not appear in the navigation bar, it can only be accessed via the url [http://localhost:5173/admin](http://localhost:5173/admin). This page displays the name, time and order total for each of the orders placed.
 
 
+## Screenshots
+![Select Pizza Page](./public/screenshots/order_page.png)
+![Customer Info Page](./public/screenshots/customer_info_page.png)
+![CheckoutPage](./public/screenshots/checkout_page.png)
+
 ## Installation
 
 ### Prerequisites
